@@ -1,4 +1,77 @@
 * {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* -------------------------
+   INTRO
+------------------------- */
+
+.intro {
+  width: 100%;
+  min-height: 62vh;
+  padding: 42px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.intro-inner {
+  width: 100%;
+  max-width: 760px;
+}
+
+.intro p {
+  font-size: clamp(34px, 3vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.name {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.links {
+  margin-top: 52px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.links a,
+.links span {
+  font-size: 22px;
+}
+
+.links a {
+  color: #111;
+}
+
+
+/* -------------------------
+   HORIZONTAL GALLERY
+------------------------- */
+
+.gallery-section {
+  width: 100%;
+  position: relative;
+  padding-bottom: 120px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
 
 .gallery-track img {
   width: 30vw;
