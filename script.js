@@ -63,4 +63,52 @@ if (window.innerWidth > 900) {
       }
 
     },
+    { passive: false }
+  );
+
+}
+
+/* -------------------------
+   CLICK + DRAG SCROLLING
+------------------------- */
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+gallery.addEventListener('mousedown', (e) => {
+
+  isDown = true;
+  gallery.style.cursor = 'grabbing';
+
+  startX = e.pageX - gallery.offsetLeft;
+  scrollLeft = gallery.scrollLeft;
+
+});
+
+window.addEventListener('mouseup', () => {
+
+  isDown = false;
+  gallery.style.cursor = 'grab';
+
+});
+
+gallery.addEventListener('mouseleave', () => {
+
+  isDown = false;
+  gallery.style.cursor = 'grab';
+
+});
+
+gallery.addEventListener('mousemove', (e) => {
+
+  if (!isDown) return;
+
+  e.preventDefault();
+
+  const x = e.pageX - gallery.offsetLeft;
+  const walk = (x - startX) * 1.5;
+
+  gallery.scrollLeft = scrollLeft - walk;
+
 });
