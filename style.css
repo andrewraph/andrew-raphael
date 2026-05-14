@@ -48,6 +48,10 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  /* 🔒 ADDED: stabilizes stacking context so layout reflow
+     in intro does NOT visually affect gallery */
+  position: relative;
 }
 
 /* -------------------------
@@ -72,6 +76,10 @@ body {
   flex: 1;
   display: flex;
   align-items: flex-start;
+
+  /* 🔒 ADDED: isolates intro reflow from affecting lower layers */
+  position: relative;
+  z-index: 2;
 }
 
 .intro-inner {
@@ -113,7 +121,7 @@ body {
 .elsewhere-content {
   padding-top: 28px;
 
-  /* keep it in flow ALWAYS so nothing shifts */
+  /* NO display toggling = prevents layout jump */
   visibility: hidden;
   height: 0;
   overflow: hidden;
@@ -131,11 +139,9 @@ body {
 
 /* desktop breathing room */
 @media (min-width: 901px) {
-
   .intro {
     padding-bottom: 120px;
   }
-
 }
 
 .links {
@@ -150,7 +156,15 @@ body {
   width: 100%;
   flex-shrink: 0;
   padding-bottom: 100px;
+
+  /* 🔒 ADDED: isolates gallery so intro changes NEVER visually affect it */
+  position: relative;
+  z-index: 1;
 }
+
+/* -------------------------
+   TRACK
+------------------------- */
 
 .gallery-track {
   display: flex;
@@ -193,6 +207,9 @@ body {
 
   color: #fff;
   pointer-events: none;
+
+  /* keeps footer stable above all layout repaint changes */
+  z-index: 10;
 }
 
 .timezones,
@@ -207,12 +224,12 @@ body {
 
 .clock-item {
   display: inline-block;
-  margin-right: 0px; /* controls space between NYC / CHI / LA */
+  margin-right: 0px;
   white-space: nowrap;
 }
 
 .tz-label {
-  margin-right: 0px; /* tighter label-to-time spacing */
+  margin-right: 0px;
 }
 
 .tz-time {
@@ -230,7 +247,6 @@ body {
 
 /* -------------------------
    MOBILE FIX (CRITICAL)
-   ONLY CHANGE SCROLL BEHAVIOR
 ------------------------- */
 
 @media (max-width: 900px) {
@@ -238,12 +254,12 @@ body {
   html,
   body {
     overflow-x: hidden;
-    overflow-y: auto; /* 🔥 enable real mobile scrolling */
+    overflow-y: auto;
     height: auto;
   }
 
   body {
-    display: block; /* restores natural document flow */
+    display: block;
   }
 
   .intro {
@@ -256,7 +272,6 @@ body {
     max-width: 100%;
   }
 
-  /* convert gallery to vertical stack */
   .gallery-track {
     display: block;
     overflow: visible;
@@ -271,7 +286,6 @@ body {
     display: block;
   }
 
-  /* footer stays visually same */
   .footer {
     left: var(--edge);
     right: var(--edge);
@@ -279,13 +293,12 @@ body {
   }
 }
 
+/* edge adjustments */
 @media (max-width: 900px) {
-
   :root {
     --edge: 18px;
     --footer-bottom: 5px;
   }
-
 }
 
 /* -------------------------
