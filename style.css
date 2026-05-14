@@ -111,12 +111,17 @@ body {
 ------------------------- */
 
 .elsewhere-content {
-  display: none;
   padding-top: 28px;
+
+  /* keep it in flow ALWAYS so nothing shifts */
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
 }
 
 .elsewhere-content.open {
-  display: block;
+  visibility: visible;
+  height: auto;
 }
 
 .elsewhere-content p {
