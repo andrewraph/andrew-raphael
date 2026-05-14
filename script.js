@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -------------------------
-     WORLD CLOCKS (NO LAYOUT SHIFT)
+     WORLD CLOCKS 
   ------------------------- */
 
   function formatTime(timeZone, label) {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------
-     RESPONSIVE HORIZONTAL SCROLL FIX
+     HORIZONTAL SCROLL 
   ------------------------- */
 
   const gallery = document.querySelector('.gallery-track');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function enableDesktopScroll() {
     if (!gallery) return;
 
-    if (wheelHandler) return; // prevent double binding
+    if (wheelHandler) return; 
 
     wheelHandler = (e) => {
       gallery.scrollLeft += e.deltaY;
