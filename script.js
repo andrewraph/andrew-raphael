@@ -50,35 +50,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------
-     HORIZONTAL SCROLL 
+     SMOOTH HORIZONTAL SCROLL
   ------------------------- */
 
   const gallery = document.querySelector('.gallery-track');
   const mq = window.matchMedia('(min-width: 900px)');
 
-  let wheelHandler = null;
+  let targetScroll = 0;
+  let currentScroll = 0;
+  let animationFrame = null;
 
-  function enableDesktopScroll() {
-    if (!gallery) return;
+  const ease = 0.075; // ← adjust this
 
-    if (wheelHandler) return; 
+  function animateScroll() {
 
-    wheelHandler = (e) => {
-      gallery.scrollLeft += e.deltaY;
-      e.preventDefault();
-    };
+    currentScroll += (targetScroll - currentScroll) * ease;
 
-    window.addEventListener('wheel', wheelHandler, { passive: false });
+    gallery.scrollLeft = currentScroll;
+
+    animationFrame = requestAnimationFrame(animateScroll);
   }
 
-  function disableDesktopScroll() {
-    if (wheelHandler) {
-      window.removeEventListener('wheel', wheelHandler);
-      wheelHandler = null;
+  function enableDesktopScroll() {
+
+    if (!gallery) return;
+
+    targetScroll = gallery.scrollLeft;
+    currentScroll = gallery.scrollLeft;
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+
+    if (!animationFrame) {
+      animateScroll();
     }
   }
 
+  function disableDesktopScroll() {
+
+    window.removeEventListener('wheel', onWheel);
+
+    if (animationFrame) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+    }
+  }
+
+  function onWheel(e) {
+
+    targetScroll += e.deltaY;
+
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+    targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+    e.preventDefault();
+  }
+
   function handleModeChange(e) {
+
     if (e.matches) {
       enableDesktopScroll();
     } else {
@@ -86,11 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // init state
   handleModeChange(mq);
 
-  // listen for resize / orientation changes
   mq.addEventListener('change', handleModeChange);
+
 
   /* -------------------------
      ELSEWHERE TOGGLE
@@ -105,11 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
 
-      if (elsewhereContent.classList.contains('open')) {
-  elsewhereContent.classList.remove('open');
-} else {
-  elsewhereContent.classList.add('open');
-}
+      elsewhereContent.classList.toggle('open');
 
     });
 
