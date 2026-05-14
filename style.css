@@ -288,12 +288,20 @@ body {
     max-width: 100%;
   }
 
-  /* 🔥 CRITICAL FIX: REMOVE GALLERY FROM FLOW IMPACT */
-  .gallery-section {
-    position: relative;
+  /* 🔥 CRITICAL FIX: isolate intro layout changes so they don't affect siblings */
+  .intro {
+    contain: layout;
   }
 
-  /* 🔥 KEY FIX: turn gallery into a fixed visual block */
+  /* 🔥 KEY FIX: hard isolate gallery from layout reflow above */
+  .gallery-section {
+    position: relative;
+
+    /* prevents any flex/layout dependency leakage */
+    contain: layout paint;
+  }
+
+  /* 🔥 FINAL FIX: prevent gallery reflow reacting to intro height changes */
   .gallery-track {
     display: block;
     overflow: visible;
@@ -301,8 +309,8 @@ body {
     padding-left: var(--edge);
     padding-right: var(--edge);
 
-    /* prevents any reflow influence from above */
-    contain: layout paint;
+    /* THIS is the key line that stabilizes mobile */
+    contain: layout paint style;
   }
 
   .gallery-track img {
