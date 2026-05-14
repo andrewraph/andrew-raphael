@@ -49,7 +49,7 @@ body {
 ------------------------- */
 
 ::selection {
-  background: #1538C3;
+  background: #999;
   color: #fff;
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .intro a:hover {
-  color: #1538C3;
+  color: #999;
 }
 
 /* remove old system */
