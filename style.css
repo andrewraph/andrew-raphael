@@ -244,3 +244,19 @@ body {
     bottom: var(--footer-bottom);
   }
 }
+
+.clock-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tz-label,
+.tz-time {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
