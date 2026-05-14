@@ -10,7 +10,7 @@
 ------------------------- */
 
 :root {
-  --text-body: clamp(15px, 1vw, 21px);
+  --text-body: clamp(14px, 1vw, 20px);
   --text-name: clamp(19px, 1.4vw, 25px);
 
   --edge: 36px;
@@ -66,6 +66,7 @@ body {
 .intro {
   width: 100%;
   padding: var(--edge);
+  padding-top: calc(var(--edge) + 10px);
   padding-bottom: 24px;
 
   flex: 1;
