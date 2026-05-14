@@ -30,7 +30,6 @@ body {
 
 .intro {
   width: 100%;
-  min-height: 62vh;
   padding: 42px;
   display: flex;
   align-items: flex-start;
@@ -155,7 +154,7 @@ body {
 
   .links a,
   .links span {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .gallery-track {
@@ -177,7 +176,7 @@ body {
 
   .timezones,
   .copyright {
-    font-size: 18px;
+    font-size: 13px;
   }
 
 }
