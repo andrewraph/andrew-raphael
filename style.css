@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'TimesNRSeven';
+  src: url('./TimesNRSevenMTStd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +16,7 @@ html {
 }
 
 body {
-  font-family: "TimesNRSevenMTStd.otf", serif;
+  font-family: "TimesNRSeven", serif;
   background: #fff;
   color: #000;
   overflow-x: hidden;
