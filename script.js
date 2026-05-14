@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <span class="tz-time">
         ${time.replace(
           ':',
-          `<span class="colon ${colonVisible ? 'on' : ''}">:</span>`
+          `<span class="colon ${colonVisible?'on':''}">:</span>`
         )}
       </span>
     `;
