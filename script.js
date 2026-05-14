@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -------------------------
-     LIVE WORLD CLOCKS
+     WORLD CLOCKS (NO LAYOUT SHIFT)
   ------------------------- */
 
   function formatTime(timeZone, label) {
@@ -19,39 +19,34 @@ document.addEventListener('DOMContentLoaded', () => {
       timeZone
     };
 
-    const parts = new Intl.DateTimeFormat('en-GB', options)
-      .format(now)
-      .split(':');
+    const time = new Intl.DateTimeFormat('en-GB', options).format(now);
 
     const colonVisible = now.getSeconds() % 2 === 0;
 
     return `
-      ${label}
-      ${parts[0]}
-      <span style="opacity:${colonVisible ? 1 : 0}">:</span>
-      ${parts[1]}
+      <span class="tz-label">${label}</span>
+      <span class="tz-time">
+        ${time.replace(
+          ':',
+          `<span class="colon ${colonVisible ? 'on' : ''}">:</span>`
+        )}
+      </span>
     `;
   }
 
   function setClock(id, zone, label) {
-
     const el = document.getElementById(id);
-
     if (!el) return;
-
     el.innerHTML = formatTime(zone, label);
-
   }
 
   function updateClocks() {
-
     setClock('chi', 'America/Chicago', 'CHI');
     setClock('nyc', 'America/New_York', 'NYC');
     setClock('la', 'America/Los_Angeles', 'LA');
     setClock('par', 'Europe/Paris', 'PAR');
     setClock('lon', 'Europe/London', 'LON');
     setClock('mil', 'Europe/Rome', 'MIL');
-
   }
 
   updateClocks();
@@ -59,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------
-     SIMPLE DESKTOP SIDE SCROLL
+     CLEAN DESKTOP HORIZONTAL SCROLL
+     (NO FIGHTING / NO SMOOTHING ENGINE)
   ------------------------- */
 
   const gallery = document.querySelector('.gallery-track');
@@ -70,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'wheel',
       (e) => {
 
+        // pure axis conversion only
         gallery.scrollLeft += e.deltaY;
 
         e.preventDefault();
