@@ -341,12 +341,14 @@ body {
   animation-delay: 0.7s;
 }
 
-.intro,
+.intro p,
 .footer {
-  opacity: 1;
+  opacity: 0;
+  animation: textFade 0.4s ease forwards;
+  animation-delay: 0.7s;
 }
 
-@keyframes fadeIn {
+@keyframes textFade {
   to {
     opacity: 1;
   }
