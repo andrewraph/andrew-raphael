@@ -49,8 +49,6 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* 🔒 ADDED: stabilizes stacking context so layout reflow
-     in intro does NOT visually affect gallery */
   position: relative;
 }
 
@@ -77,7 +75,6 @@ body {
   display: flex;
   align-items: flex-start;
 
-  /* 🔒 ADDED: isolates intro reflow from affecting lower layers */
   position: relative;
   z-index: 2;
 }
@@ -121,7 +118,6 @@ body {
 .elsewhere-content {
   padding-top: 28px;
 
-  /* NO display toggling = prevents layout jump */
   visibility: hidden;
   height: 0;
   overflow: hidden;
@@ -149,38 +145,17 @@ body {
 }
 
 /* -------------------------
-   GALLERY (DESKTOP HORIZONTAL)
+   GALLERY (DESKTOP)
 ------------------------- */
 
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
+  padding-bottom: 100px;
 
-  /* 🔥 KEY FIX: remove from document flow on desktop */
+  position: relative;
+  z-index: 1;
 }
-
-@media (min-width: 901px) {
-  .gallery-section {
-    position: fixed;
-    left: 0;
-    right: 0;
-
-    /* sits above footer area visually but doesn't move */
-    bottom: 90px;
-
-    padding-bottom: 0;
-  }
-}
-
-@media (min-width: 901px) {
-  .intro {
-    flex: 0 0 auto;
-  }
-}
-
-/* -------------------------
-   TRACK
-------------------------- */
 
 .gallery-track {
   display: flex;
@@ -224,7 +199,6 @@ body {
   color: #fff;
   pointer-events: none;
 
-  /* keeps footer stable above all layout repaint changes */
   z-index: 10;
 }
 
@@ -262,7 +236,7 @@ body {
 .colon:not(.on) { opacity: 0; }
 
 /* -------------------------
-   MOBILE FIX (CRITICAL)
+   MOBILE FIX (FINAL)
 ------------------------- */
 
 @media (max-width: 900px) {
@@ -286,6 +260,14 @@ body {
 
   .intro-inner {
     max-width: 100%;
+  }
+
+  /* 🔥 KEY FIX: lock gallery in place using visual anchor spacing */
+  .gallery-section {
+    position: relative;
+
+    /* THIS prevents intro expansion from pushing it visually */
+    margin-top: 60px; /* adjust 40–80px depending on your design */
   }
 
   .gallery-track {
