@@ -1,7 +1,3 @@
-/* -------------------------
-   WAIT FOR DOM
-------------------------- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -------------------------
@@ -28,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <span class="tz-time">
         ${time.replace(
           ':',
-          `<span class="colon ${colonVisible?'on':''}">:</span>`
+          `<span class="colon ${colonVisible ? 'on' : ''}">:</span>`
         )}
       </span>
     `;
@@ -54,27 +50,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------
-     CLEAN DESKTOP HORIZONTAL SCROLL
-     (NO FIGHTING / NO SMOOTHING ENGINE)
+     RESPONSIVE HORIZONTAL SCROLL FIX
   ------------------------- */
 
   const gallery = document.querySelector('.gallery-track');
+  const mq = window.matchMedia('(min-width: 900px)');
 
-  if (gallery && window.innerWidth > 900) {
+  let wheelHandler = null;
 
-    window.addEventListener(
-      'wheel',
-      (e) => {
+  function enableDesktopScroll() {
+    if (!gallery) return;
 
-        // pure axis conversion only
-        gallery.scrollLeft += e.deltaY;
+    if (wheelHandler) return; // prevent double binding
 
-        e.preventDefault();
+    wheelHandler = (e) => {
+      gallery.scrollLeft += e.deltaY;
+      e.preventDefault();
+    };
 
-      },
-      { passive: false }
-    );
-
+    window.addEventListener('wheel', wheelHandler, { passive: false });
   }
+
+  function disableDesktopScroll() {
+    if (wheelHandler) {
+      window.removeEventListener('wheel', wheelHandler);
+      wheelHandler = null;
+    }
+  }
+
+  function handleModeChange(e) {
+    if (e.matches) {
+      enableDesktopScroll();
+    } else {
+      disableDesktopScroll();
+    }
+  }
+
+  // init state
+  handleModeChange(mq);
+
+  // listen for resize / orientation changes
+  mq.addEventListener('change', handleModeChange);
 
 });
