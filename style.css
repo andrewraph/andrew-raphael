@@ -73,7 +73,7 @@ body {
   padding-top: calc(var(--edge) + 5px);
   padding-bottom: 24px;
 
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-start;
 
