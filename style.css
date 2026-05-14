@@ -6,12 +6,16 @@
 }
 
 /* -------------------------
-   FLUID TYPOGRAPHY SYSTEM
+   SYSTEM TOKENS
 ------------------------- */
 
 :root {
   --text-body: clamp(12.5px, 0.9vw, 16px);
   --text-name: clamp(20px, 1.6vw, 28px);
+
+  /* consistent edge system */
+  --edge: 12px;
+  --footer-edge: 16px;
 }
 
 /* -------------------------
@@ -51,14 +55,15 @@ body {
 }
 
 /* -------------------------
-   INTRO
+   INTRO LAYOUT FIX
 ------------------------- */
 
 .intro {
   width: 100%;
-  padding: 42px 42px 24px 42px;
-  flex: 1;
+  padding: var(--edge);
+  padding-bottom: 24px;
 
+  flex: 1;
   display: flex;
   align-items: flex-start;
 }
@@ -68,13 +73,28 @@ body {
   max-width: 50%;
 }
 
+/* -------------------------
+   TEXT SYSTEM FIX
+   (fixes line spacing inconsistency)
+------------------------- */
+
 .intro p {
   font-size: var(--text-body);
-  line-height: 1.4;
+  line-height: 1.45;
+
+  /* key fix: prevents mixed font-size line spacing distortion */
+  display: block;
 }
 
+/* name no longer participates in paragraph flow spacing issues */
 .name {
   font-size: var(--text-name);
+  line-height: 1.15;
+
+  /* ensures it behaves like a title block, not inline text */
+  display: block;
+
+  margin-bottom: 6px;
 }
 
 /* -------------------------
@@ -91,7 +111,7 @@ body {
   color: #b8b8b8;
 }
 
-/* remove old system entirely */
+/* remove old system */
 .links {
   display: none;
 }
@@ -134,14 +154,17 @@ body {
 }
 
 /* -------------------------
-   FOOTER
+   FOOTER ALIGNMENT FIX
 ------------------------- */
 
 .footer {
   position: fixed;
-  left: 40px;
-  bottom: 32px;
-  z-index: 100;
+  left: var(--edge);
+  right: var(--edge);
+  bottom: var(--footer-edge);
+
+  display: flex;
+  justify-content: space-between;
 
   color: #000;
   mix-blend-mode: normal;
@@ -151,11 +174,11 @@ body {
 .timezones,
 .copyright {
   font-size: var(--text-body);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .copyright {
-  margin-top: 6px;
+  text-align: right;
 }
 
 /* -------------------------
@@ -201,7 +224,7 @@ body {
   }
 
   .intro {
-    padding: 40px;
+    padding: var(--edge);
     padding-bottom: 80px;
   }
 
@@ -221,7 +244,8 @@ body {
   }
 
   .footer {
-    left: 22px;
-    bottom: 22px;
+    left: var(--edge);
+    right: var(--edge);
+    bottom: var(--footer-edge);
   }
 }
