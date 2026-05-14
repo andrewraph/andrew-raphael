@@ -290,6 +290,5 @@ body {
 .footer {
   color: #fff;
   mix-blend-mode: difference;
-  position: relative;
   z-index: 10;
 }
