@@ -19,16 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
       timeZone
     };
 
-    let time = new Intl.DateTimeFormat('en-GB', options)
-      .format(now);
+    const parts = new Intl.DateTimeFormat('en-GB', options)
+      .format(now)
+      .split(':');
 
-    /* blinking colon */
-    time = time.replace(
-      ':',
-      now.getSeconds() % 2 === 0 ? ':' : ' '
-    );
+    const colonVisible = now.getSeconds() % 2 === 0;
 
-    return `${label} ${time}`;
+    return `
+      ${label}
+      ${parts[0]}
+      <span style="opacity:${colonVisible ? 1 : 0}">:</span>
+      ${parts[1]}
+    `;
   }
 
   function setClock(id, zone, label) {
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!el) return;
 
-    el.textContent = formatTime(zone, label);
+    el.innerHTML = formatTime(zone, label);
 
   }
 
@@ -57,18 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------
-     DESKTOP HORIZONTAL SCROLL
+     GALLERY
   ------------------------- */
 
   const gallery = document.querySelector('.gallery-track');
 
+
+
+  /* -------------------------
+     SMOOTH DESKTOP SCROLL
+  ------------------------- */
+
   if (gallery && window.innerWidth > 900) {
+
+    let targetScroll = gallery.scrollLeft;
+    let currentScroll = gallery.scrollLeft;
 
     window.addEventListener(
       'wheel',
       (e) => {
 
-        gallery.scrollLeft += e.deltaY;
+        targetScroll += e.deltaY * 0.9;
 
         e.preventDefault();
 
@@ -76,7 +87,20 @@ document.addEventListener('DOMContentLoaded', () => {
       { passive: false }
     );
 
+    function animateScroll() {
+
+      currentScroll += (targetScroll - currentScroll) * 0.08;
+
+      gallery.scrollLeft = currentScroll;
+
+      requestAnimationFrame(animateScroll);
+
+    }
+
+    animateScroll();
+
   }
+
 
 
   /* -------------------------
