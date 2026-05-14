@@ -245,18 +245,20 @@ body {
   }
 }
 
+
+
+
 .clock-item {
   display: flex;
-  justify-content: flex-start;
   align-items: baseline;
-  gap: 8px;
-  font-variant-numeric: tabular-nums;
+  gap: 0; /* or small controlled spacing like 6px */
 }
 
 .tz-label,
 .tz-time {
-  display: block;
+  display: inline-block;
   margin: 0;
   padding: 0;
   line-height: 1;
+  letter-spacing: 0;
 }
