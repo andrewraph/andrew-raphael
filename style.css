@@ -141,7 +141,6 @@ body {
 .elsewhere-content p {
   font-size: var(--text-body);
   line-height: 1.45;
-  margin-bottom: 6px;
 }
 
 /* desktop breathing room */
