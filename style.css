@@ -202,12 +202,12 @@ body {
 
 .clock-item {
   display: inline-block;
-  margin-right: 14px; /* controls space between NYC / CHI / LA */
+  margin-right: 0px; /* controls space between NYC / CHI / LA */
   white-space: nowrap;
 }
 
 .tz-label {
-  margin-right: 4px; /* tighter label-to-time spacing */
+  margin-right: 0px; /* tighter label-to-time spacing */
 }
 
 .tz-time {
