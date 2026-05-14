@@ -235,12 +235,12 @@ body {
   html,
   body {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto; /* 🔥 enable real mobile scrolling */
     height: auto;
   }
 
   body {
-    display: block;
+    display: block; /* restores natural document flow */
   }
 
   .intro {
@@ -274,4 +274,13 @@ body {
     right: var(--edge);
     bottom: var(--footer-bottom);
   }
+}
+
+@media (max-width: 900px) {
+
+  :root {
+    --edge: 18px;
+    --footer-bottom: 18px;
+  }
+
 }
