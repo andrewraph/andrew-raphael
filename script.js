@@ -19,8 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
       timeZone
     };
 
-    const time = new Intl.DateTimeFormat('en-GB', options)
+    let time = new Intl.DateTimeFormat('en-GB', options)
       .format(now);
+
+    /* blinking colon */
+    time = time.replace(
+      ':',
+      now.getSeconds() % 2 === 0 ? ':' : ' '
+    );
 
     return `${label} ${time}`;
   }
@@ -77,48 +83,52 @@ document.addEventListener('DOMContentLoaded', () => {
      CLICK + DRAG
   ------------------------- */
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  if (gallery) {
 
-  gallery.addEventListener('mousedown', (e) => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-    isDown = true;
+    gallery.addEventListener('mousedown', (e) => {
 
-    gallery.classList.add('dragging');
+      isDown = true;
 
-    startX = e.pageX - gallery.offsetLeft;
-    scrollLeft = gallery.scrollLeft;
+      gallery.classList.add('dragging');
 
-  });
+      startX = e.pageX - gallery.offsetLeft;
+      scrollLeft = gallery.scrollLeft;
 
-  window.addEventListener('mouseup', () => {
+    });
 
-    isDown = false;
+    window.addEventListener('mouseup', () => {
 
-    gallery.classList.remove('dragging');
+      isDown = false;
 
-  });
+      gallery.classList.remove('dragging');
 
-  gallery.addEventListener('mouseleave', () => {
+    });
 
-    isDown = false;
+    gallery.addEventListener('mouseleave', () => {
 
-    gallery.classList.remove('dragging');
+      isDown = false;
 
-  });
+      gallery.classList.remove('dragging');
 
-  gallery.addEventListener('mousemove', (e) => {
+    });
 
-    if (!isDown) return;
+    gallery.addEventListener('mousemove', (e) => {
 
-    e.preventDefault();
+      if (!isDown) return;
 
-    const x = e.pageX - gallery.offsetLeft;
-    const walk = (x - startX) * 1.5;
+      e.preventDefault();
 
-    gallery.scrollLeft = scrollLeft - walk;
+      const x = e.pageX - gallery.offsetLeft;
+      const walk = (x - startX) * 1.5;
 
-  });
+      gallery.scrollLeft = scrollLeft - walk;
+
+    });
+
+  }
 
 });
