@@ -31,13 +31,12 @@ body {
 
 .intro-inner {
   width: 100%;
-  max-width: 760px;
+  max-width: 50%;
 }
 
 .intro p {
   font-size: 13pt;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .name {
@@ -53,11 +52,11 @@ body {
 
 .links a,
 .links span {
-  font-size: 22px;
+  font-size: 13px;
 }
 
 .links a {
-  color: #111;
+  color: #000;
 }
 
 
@@ -111,12 +110,12 @@ body {
 }
 
 .timezones {
-  font-size: 20px;
+  font-size: 13px;
   line-height: 1.2;
 }
 
 .copyright {
-  font-size: 20px;
+  font-size: 13px;
   margin-top: 4px;
 }
 
