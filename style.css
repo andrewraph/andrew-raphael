@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+/* -------------------------
+   BASE RESET
+------------------------- */
+
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +32,14 @@ body {
   flex-direction: column;
 }
 
+/* -------------------------
+   TEXT SELECTION
+------------------------- */
+
+::selection {
+  background: #0b1d3a;
+  color: #fff;
+}
 
 /* -------------------------
    INTRO
@@ -56,22 +68,24 @@ body {
   font-size: 20pt;
 }
 
-.links {
-  margin-top: 52px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
+/* -------------------------
+   INLINE LINKS (NOW PART OF TEXT)
+------------------------- */
 
-.links a,
-.links span {
-  font-size: 13px;
-}
-
-.links a {
+.intro a {
   color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
+.intro a:hover {
+  color: #b8b8b8;
+}
+
+/* remove old system entirely */
+.links {
+  display: none;
+}
 
 /* -------------------------
    HORIZONTAL GALLERY
@@ -80,7 +94,6 @@ body {
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
-
   padding-bottom: 80px;
 }
 
@@ -109,9 +122,8 @@ body {
   pointer-events: none;
 }
 
-
 /* -------------------------
-   FOOTER
+   FOOTER (MATCHES INTRO TYPOGRAPHY)
 ------------------------- */
 
 .footer {
@@ -120,21 +132,20 @@ body {
   bottom: 32px;
   z-index: 100;
 
-  color: white;
-  mix-blend-mode: difference;
+  color: #000;
+  mix-blend-mode: normal;
   pointer-events: none;
 }
 
-.timezones {
-  font-size: 13px;
+.timezones,
+.copyright {
+  font-size: 13pt;
   line-height: 1.4;
 }
 
 .copyright {
-  font-size: 13px;
-  margin-top: 4px;
+  margin-top: 6px;
 }
-
 
 /* -------------------------
    MOBILE
@@ -164,11 +175,6 @@ body {
   .intro p {
     font-size: 13pt;
     line-height: 1.4;
-  }
-
-  .links {
-    margin-top: 42px;
-    flex-wrap: wrap;
   }
 
   .gallery-track {
