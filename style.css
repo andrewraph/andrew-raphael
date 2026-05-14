@@ -6,6 +6,15 @@
 }
 
 /* -------------------------
+   FLUID TYPOGRAPHY SYSTEM
+------------------------- */
+
+:root {
+  --text-body: clamp(12.5px, 0.9vw, 16px);
+  --text-name: clamp(20px, 1.6vw, 28px);
+}
+
+/* -------------------------
    BASE RESET
 ------------------------- */
 
@@ -60,16 +69,16 @@ body {
 }
 
 .intro p {
-  font-size: 13pt;
+  font-size: var(--text-body);
   line-height: 1.4;
 }
 
 .name {
-  font-size: 20pt;
+  font-size: var(--text-name);
 }
 
 /* -------------------------
-   INLINE LINKS (NOW PART OF TEXT)
+   INLINE LINKS
 ------------------------- */
 
 .intro a {
@@ -105,6 +114,8 @@ body {
   scrollbar-width: none;
   scroll-behavior: smooth;
   cursor: grab;
+
+  overscroll-behavior-x: contain;
 }
 
 .gallery-track::-webkit-scrollbar {
@@ -123,7 +134,7 @@ body {
 }
 
 /* -------------------------
-   FOOTER (MATCHES INTRO TYPOGRAPHY)
+   FOOTER
 ------------------------- */
 
 .footer {
@@ -139,12 +150,38 @@ body {
 
 .timezones,
 .copyright {
-  font-size: 13pt;
+  font-size: var(--text-body);
   line-height: 1.4;
 }
 
 .copyright {
   margin-top: 6px;
+}
+
+/* -------------------------
+   COLON CLOCK FIX
+------------------------- */
+
+.colon {
+  display: inline-block;
+  width: 0.6ch;
+  text-align: center;
+}
+
+.colon.on {
+  opacity: 1;
+}
+
+.colon:not(.on) {
+  opacity: 0;
+}
+
+.tz-label {
+  margin-right: 8px;
+}
+
+.tz-time {
+  letter-spacing: 0;
 }
 
 /* -------------------------
@@ -172,11 +209,6 @@ body {
     max-width: 100%;
   }
 
-  .intro p {
-    font-size: 13pt;
-    line-height: 1.4;
-  }
-
   .gallery-track {
     display: block;
     overflow: visible;
@@ -192,51 +224,4 @@ body {
     left: 22px;
     bottom: 22px;
   }
-}
-
-
-
-.colon {
-  display: inline-block;
-  width: 0.6ch;      /* prevents layout jump */
-  text-align: center;
-}
-
-.colon.on {
-  opacity: 1;
-}
-
-.colon:not(.on) {
-  opacity: 0;
-}
-
-
-.timezones {
-  font-size: 13pt;
-  line-height: 1.4;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-.tz-label {
-  margin-right: 8px;
-}
-
-.tz-time {
-  letter-spacing: 0;
-}
-
-.footer {
-  color: #000;
-  mix-blend-mode: normal;
-}
-
-.footer .timezones,
-.footer .copyright {
-  font-size: 13pt;
-  line-height: 1.4;
-}
-
-.gallery-track {
-  overscroll-behavior-x: contain;
 }
