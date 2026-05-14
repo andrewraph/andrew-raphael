@@ -11,7 +11,11 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -19,8 +23,10 @@ body {
   font-family: "TimesNRSeven", serif;
   background: #fff;
   color: #000;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -30,7 +36,9 @@ body {
 
 .intro {
   width: 100%;
-  padding: 42px;
+  padding: 42px 42px 24px 42px;
+  flex: 1;
+
   display: flex;
   align-items: flex-start;
 }
@@ -72,17 +80,18 @@ body {
 
 .gallery-section {
   width: 100%;
-  position: relative;
-  padding-bottom: 120px;
+  flex-shrink: 0;
+
+  padding-bottom: 40px;
 }
 
 .gallery-track {
   display: flex;
-  gap: 0;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-behavior: smooth;
+
   scrollbar-width: none;
+  scroll-behavior: smooth;
   cursor: grab;
 }
 
@@ -91,11 +100,12 @@ body {
 }
 
 .gallery-track img {
-  width: 30vw;
-  min-width: 30vw;
-  height: 55vh;
-  object-fit: cover;
+  height: 30vh;
+  width: auto;
+
   flex-shrink: 0;
+  object-fit: cover;
+
   user-select: none;
   pointer-events: none;
 }
@@ -110,6 +120,7 @@ body {
   left: 40px;
   bottom: 32px;
   z-index: 100;
+
   color: white;
   mix-blend-mode: difference;
   pointer-events: none;
@@ -132,8 +143,17 @@ body {
 
 @media (max-width: 900px) {
 
+  html,
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  body {
+    display: block;
+  }
+
   .intro {
-    min-height: auto;
     padding: 40px;
     padding-bottom: 80px;
   }
@@ -152,19 +172,13 @@ body {
     flex-wrap: wrap;
   }
 
-  .links a,
-  .links span {
-    font-size: 13px;
-  }
-
   .gallery-track {
-    overflow: visible;
     display: block;
+    overflow: visible;
   }
 
   .gallery-track img {
     width: 100%;
-    min-width: 100%;
     height: auto;
     display: block;
   }
@@ -173,10 +187,4 @@ body {
     left: 22px;
     bottom: 22px;
   }
-
-  .timezones,
-  .copyright {
-    font-size: 13px;
-  }
-
 }
