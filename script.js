@@ -1,114 +1,124 @@
 /* -------------------------
-   LIVE WORLD CLOCKS
+   WAIT FOR DOM
 ------------------------- */
 
-function formatTime(timeZone, label) {
+document.addEventListener('DOMContentLoaded', () => {
 
-  const now = new Date();
+  /* -------------------------
+     LIVE WORLD CLOCKS
+  ------------------------- */
 
-  const options = {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    timeZone
-  };
+  function formatTime(timeZone, label) {
 
-  let time = new Intl.DateTimeFormat('en-GB', options)
-    .format(now)
-    .replace(':', now.getSeconds() % 2 === 0 ? ':' : ' ');
+    const now = new Date();
 
-  return `${label} ${time}`;
-}
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone
+    };
 
-function updateClocks() {
+    const time = new Intl.DateTimeFormat('en-GB', options)
+      .format(now);
 
-  document.getElementById('chi').textContent =
-    formatTime('America/Chicago', 'CHI');
+    return `${label} ${time}`;
+  }
 
-  document.getElementById('nyc').textContent =
-    formatTime('America/New_York', 'NYC');
+  function setClock(id, zone, label) {
 
-  document.getElementById('la').textContent =
-    formatTime('America/Los_Angeles', 'LA');
+    const el = document.getElementById(id);
 
-  document.getElementById('par').textContent =
-    formatTime('Europe/Paris', 'PAR');
+    if (!el) return;
 
-  document.getElementById('lon').textContent =
-    formatTime('Europe/London', 'LON');
+    el.textContent = formatTime(zone, label);
 
-  document.getElementById('mil').textContent =
-    formatTime('Europe/Rome', 'MIL');
-}
+  }
 
-updateClocks();
-setInterval(updateClocks, 1000);
+  function updateClocks() {
+
+    setClock('chi', 'America/Chicago', 'CHI');
+    setClock('nyc', 'America/New_York', 'NYC');
+    setClock('la', 'America/Los_Angeles', 'LA');
+    setClock('par', 'Europe/Paris', 'PAR');
+    setClock('lon', 'Europe/London', 'LON');
+    setClock('mil', 'Europe/Rome', 'MIL');
+
+  }
+
+  updateClocks();
+  setInterval(updateClocks, 1000);
 
 
-/* -------------------------
-   HORIZONTAL SCROLL
-------------------------- */
+  /* -------------------------
+     DESKTOP HORIZONTAL SCROLL
+  ------------------------- */
 
-const gallery = document.querySelector('.gallery-track');
+  const gallery = document.querySelector('.gallery-track');
 
-if (window.innerWidth > 900) {
+  if (gallery && window.innerWidth > 900) {
 
-  window.addEventListener(
-    'wheel',
-    (e) => {
+    window.addEventListener(
+      'wheel',
+      (e) => {
 
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
         gallery.scrollLeft += e.deltaY;
-      }
 
-    },
-    { passive: false }
-  );
+        e.preventDefault();
 
-}
+      },
+      { passive: false }
+    );
 
-/* -------------------------
-   CLICK + DRAG SCROLLING
-------------------------- */
+  }
 
-let isDown = false;
-let startX;
-let scrollLeft;
 
-gallery.addEventListener('mousedown', (e) => {
+  /* -------------------------
+     CLICK + DRAG
+  ------------------------- */
 
-  isDown = true;
-  gallery.style.cursor = 'grabbing';
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  startX = e.pageX - gallery.offsetLeft;
-  scrollLeft = gallery.scrollLeft;
+  gallery.addEventListener('mousedown', (e) => {
 
-});
+    isDown = true;
 
-window.addEventListener('mouseup', () => {
+    gallery.classList.add('dragging');
 
-  isDown = false;
-  gallery.style.cursor = 'grab';
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
 
-});
+  });
 
-gallery.addEventListener('mouseleave', () => {
+  window.addEventListener('mouseup', () => {
 
-  isDown = false;
-  gallery.style.cursor = 'grab';
+    isDown = false;
 
-});
+    gallery.classList.remove('dragging');
 
-gallery.addEventListener('mousemove', (e) => {
+  });
 
-  if (!isDown) return;
+  gallery.addEventListener('mouseleave', () => {
 
-  e.preventDefault();
+    isDown = false;
 
-  const x = e.pageX - gallery.offsetLeft;
-  const walk = (x - startX) * 1.5;
+    gallery.classList.remove('dragging');
 
-  gallery.scrollLeft = scrollLeft - walk;
+  });
+
+  gallery.addEventListener('mousemove', (e) => {
+
+    if (!isDown) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 1.5;
+
+    gallery.scrollLeft = scrollLeft - walk;
+
+  });
 
 });
