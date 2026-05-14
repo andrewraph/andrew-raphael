@@ -58,7 +58,7 @@ body {
 ------------------------- */
 
 ::selection {
-  background: #999;
+  background: #ccc;
   color: #fff;
 }
 
@@ -119,7 +119,7 @@ body {
   opacity: 0;
 
   transition:
-    max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    max-height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.25s ease;
 
   will-change: max-height, opacity;
@@ -137,7 +137,6 @@ body {
 .elsewhere-content p {
   font-size: var(--text-body);
   line-height: 1.45;
-  margin-bottom: 6px;
 }
 
 /* desktop breathing room */
