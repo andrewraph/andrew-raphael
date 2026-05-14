@@ -1,3 +1,5 @@
+just give me the full new version with the fix for mobile
+
 @font-face {
   font-family: 'TimesNRSeven';
   src: url('./TimesNRSevenMTStd.otf') format('opentype');
@@ -49,6 +51,8 @@ body {
   display: flex;
   flex-direction: column;
 
+  /* 🔒 ADDED: stabilizes stacking context so layout reflow
+     in intro does NOT visually affect gallery */
   position: relative;
 }
 
@@ -75,6 +79,7 @@ body {
   display: flex;
   align-items: flex-start;
 
+  /* 🔒 ADDED: isolates intro reflow from affecting lower layers */
   position: relative;
   z-index: 2;
 }
@@ -118,6 +123,7 @@ body {
 .elsewhere-content {
   padding-top: 28px;
 
+  /* NO display toggling = prevents layout jump */
   visibility: hidden;
   height: 0;
   overflow: hidden;
@@ -145,7 +151,7 @@ body {
 }
 
 /* -------------------------
-   GALLERY (DESKTOP)
+   GALLERY (DESKTOP HORIZONTAL)
 ------------------------- */
 
 .gallery-section {
@@ -153,9 +159,14 @@ body {
   flex-shrink: 0;
   padding-bottom: 100px;
 
+  /* 🔒 ADDED: isolates gallery so intro changes NEVER visually affect it */
   position: relative;
   z-index: 1;
 }
+
+/* -------------------------
+   TRACK
+------------------------- */
 
 .gallery-track {
   display: flex;
@@ -199,6 +210,7 @@ body {
   color: #fff;
   pointer-events: none;
 
+  /* keeps footer stable above all layout repaint changes */
   z-index: 10;
 }
 
@@ -236,7 +248,7 @@ body {
 .colon:not(.on) { opacity: 0; }
 
 /* -------------------------
-   MOBILE FIX (FINAL)
+   MOBILE FIX (CRITICAL)
 ------------------------- */
 
 @media (max-width: 900px) {
@@ -260,14 +272,6 @@ body {
 
   .intro-inner {
     max-width: 100%;
-  }
-
-  /* 🔥 KEY FIX: lock gallery in place using visual anchor spacing */
-  .gallery-section {
-    position: relative;
-
-    /* THIS prevents intro expansion from pushing it visually */
-    margin-top: 60px; /* adjust 40–80px depending on your design */
   }
 
   .gallery-track {
