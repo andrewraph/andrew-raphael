@@ -92,4 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // listen for resize / orientation changes
   mq.addEventListener('change', handleModeChange);
 
+  /* -------------------------
+     ELSEWHERE TOGGLE
+  ------------------------- */
+
+  const elsewhereToggle = document.querySelector('.elsewhere-toggle');
+  const elsewhereContent = document.querySelector('.elsewhere-content');
+
+  if (elsewhereToggle && elsewhereContent) {
+
+    elsewhereToggle.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      elsewhereContent.classList.toggle('open');
+
+    });
+
+  }
+
 });
