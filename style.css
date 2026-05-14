@@ -10,8 +10,8 @@
 ------------------------- */
 
 :root {
-  --text-body: clamp(14px, 1vw, 20px);
-  --text-name: clamp(19px, 1.4vw, 25px);
+  --text-body: clamp(12px, 1vw, 18px);
+  --text-name: clamp(17px, 1.4vw, 23px);
 
   --edge: 36px;
   --footer-bottom: 32px;
