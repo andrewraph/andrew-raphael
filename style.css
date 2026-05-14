@@ -85,8 +85,6 @@ body {
   display: inline-block;
   vertical-align: baseline;
 
-  /* KEY FIX:
-     prevents the large type from inflating line box */
   margin-bottom: -0.15em;
 }
 
@@ -111,13 +109,15 @@ body {
 
 /* -------------------------
    HORIZONTAL GALLERY
+   FIXED SECTION
 ------------------------- */
 
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
-  padding-bottom: 110px;
-  padding-left: 34px;
+  padding-bottom: 124px;
+
+  /* ❌ removed: padding-left: 34px; */
 }
 
 .gallery-track {
@@ -125,9 +125,12 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
 
+  /* ✅ THIS is the correct place for edge spacing */
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+
   scrollbar-width: none;
   scroll-behavior: auto;
-  
 
   overscroll-behavior-x: contain;
 }
@@ -162,14 +165,12 @@ body {
   pointer-events: none;
 }
 
-/* KEEP STACKED LAYOUT (DO NOT CHANGE STRUCTURE) */
 .timezones,
 .copyright {
   font-size: var(--text-body);
   line-height: 1.45;
   display: block;
 }
-
 
 /* -------------------------
    CLOCK FIXES
@@ -225,6 +226,10 @@ body {
   .gallery-track {
     display: block;
     overflow: visible;
+
+    /* (safe to keep consistent spacing behavior) */
+    padding-left: var(--edge);
+    padding-right: var(--edge);
   }
 
   .gallery-track img {
