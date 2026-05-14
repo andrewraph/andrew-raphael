@@ -176,13 +176,13 @@ body {
 ------------------------- */
 
 .clock-item {
-  display: flex;
-  align-items: baseline;
-  gap: 0;
+  display: inline-block;
+  margin-right: 14px; /* controls space between NYC / CHI / LA */
+  white-space: nowrap;
 }
 
 .tz-label {
-  margin-right: 8px;
+  margin-right: 4px; /* tighter label-to-time spacing */
 }
 
 .tz-time {
@@ -218,7 +218,7 @@ body {
 
   .intro {
     padding: var(--edge);
-    padding-bottom: 80px;
+    padding-bottom: 140px;
   }
 
   .intro-inner {
