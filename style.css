@@ -331,10 +331,19 @@ body {
    FADE LOAD 
 ------------------------- */
 
-.page {
+/* -------------------------
+   FADE LOAD (BLEND-SAFE)
+------------------------- */
+
+.gallery-section {
   opacity: 0;
   animation: fadeIn 0.4s ease forwards;
   animation-delay: 0.7s;
+}
+
+.intro,
+.footer {
+  opacity: 1;
 }
 
 @keyframes fadeIn {
