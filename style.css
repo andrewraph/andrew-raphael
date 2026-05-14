@@ -14,7 +14,7 @@
   --text-name: clamp(19px, 1.6vw, 28px);
 
   --edge: 36px;
-  --footer-bottom: 36px;
+  --footer-bottom: 32px;
 }
 
 /* -------------------------
@@ -115,7 +115,7 @@ body {
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
-  padding-bottom: 116px;
+  padding-bottom: 112px;
 
   /* ❌ removed: padding-left: 34px; */
 }
