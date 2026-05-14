@@ -81,14 +81,13 @@ body {
 .name {
   font-size: var(--text-name);
   line-height: 1;
-  display: inline;
 
-  /* KEY FIX: prevents enlarged line box from affecting layout rhythm */
+  display: inline-block;
   vertical-align: baseline;
 
-  /* optical correction so it doesn’t feel “floating” */
-  position: relative;
-  top: 0.12em;
+  /* KEY FIX:
+     prevents the large type from inflating line box */
+  margin-bottom: -0.15em;
 }
 
 /* -------------------------
