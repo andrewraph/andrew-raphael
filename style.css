@@ -251,7 +251,7 @@ body {
 @media (max-width: 900px) {
 
   :root {
-    --edge: 14px;
+    --edge: 18px;
   }
 
 }
