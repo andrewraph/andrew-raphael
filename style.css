@@ -244,7 +244,7 @@ body {
   .intro {
     padding: var(--edge);
     padding-top: calc(var(--edge) + 10px);
-    padding-bottom: 140px;
+    padding-bottom: 120px;
   }
 
   .intro-inner {
