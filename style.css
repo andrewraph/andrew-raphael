@@ -193,3 +193,50 @@ body {
     bottom: 22px;
   }
 }
+
+
+
+.colon {
+  display: inline-block;
+  width: 0.6ch;      /* prevents layout jump */
+  text-align: center;
+}
+
+.colon.on {
+  opacity: 1;
+}
+
+.colon:not(.on) {
+  opacity: 0;
+}
+
+
+.timezones {
+  font-size: 13pt;
+  line-height: 1.4;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.tz-label {
+  margin-right: 8px;
+}
+
+.tz-time {
+  letter-spacing: 0;
+}
+
+.footer {
+  color: #000;
+  mix-blend-mode: normal;
+}
+
+.footer .timezones,
+.footer .copyright {
+  font-size: 13pt;
+  line-height: 1.4;
+}
+
+.gallery-track {
+  overscroll-behavior-x: contain;
+}
