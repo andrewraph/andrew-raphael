@@ -247,3 +247,11 @@ body {
     bottom: var(--footer-bottom);
   }
 }
+
+@media (max-width: 900px) {
+
+  :root {
+    --edge: 14px;
+  }
+
+}
