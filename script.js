@@ -105,7 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
 
-      elsewhereContent.classList.toggle('open');
+      if (elsewhereContent.classList.contains('open')) {
+  elsewhereContent.classList.remove('open');
+} else {
+  elsewhereContent.classList.add('open');
+}
 
     });
 
