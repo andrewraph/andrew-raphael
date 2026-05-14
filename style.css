@@ -44,9 +44,6 @@ body {
   font-family: "TimesNRSeven", serif;
   background: #fff;
 
-  color: #fff;
-  mix-blend-mode: difference;
-
   -webkit-font-smoothing: antialiased;
 
   display: flex;
@@ -283,4 +280,16 @@ body {
     --footer-bottom: 18px;
   }
 
+}
+
+/* -------------------------
+   TEXT DIFFERENCE LAYER
+------------------------- */
+
+.intro,
+.footer {
+  color: #fff;
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 10;
 }
