@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentScroll = 0;
   let animationFrame = null;
 
-  const ease = 0.088; // ← adjust this
+  const ease = 0.094; // ← adjust this
 
   function animateScroll() {
 
