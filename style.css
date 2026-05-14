@@ -274,12 +274,21 @@ body {
     max-width: 100%;
   }
 
+  /* 🔥 CRITICAL FIX: REMOVE GALLERY FROM FLOW IMPACT */
+  .gallery-section {
+    position: relative;
+  }
+
+  /* 🔥 KEY FIX: turn gallery into a fixed visual block */
   .gallery-track {
     display: block;
     overflow: visible;
 
     padding-left: var(--edge);
     padding-right: var(--edge);
+
+    /* prevents any reflow influence from above */
+    contain: layout paint;
   }
 
   .gallery-track img {
