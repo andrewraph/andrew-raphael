@@ -155,11 +155,27 @@ body {
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
-  padding-bottom: 100px;
 
-  /* 🔒 ADDED: isolates gallery so intro changes NEVER visually affect it */
-  position: relative;
-  z-index: 1;
+  /* 🔥 KEY FIX: remove from document flow on desktop */
+}
+
+@media (min-width: 901px) {
+  .gallery-section {
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    /* sits above footer area visually but doesn't move */
+    bottom: 90px;
+
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 901px) {
+  .intro {
+    flex: 0 0 auto;
+  }
 }
 
 /* -------------------------
