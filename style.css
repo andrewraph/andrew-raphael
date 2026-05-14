@@ -288,21 +288,25 @@ body {
     max-width: 100%;
   }
 
-  /* 🔥 CRITICAL: remove gallery from flow (same logic as desktop) */
+  /* 🔥 CRITICAL FIX: remove gallery from document flow */
   .gallery-section {
-    position: relative;
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    /* places it where it visually already sits in your design */
+    bottom: 120px;
+
+    z-index: 1;
+    pointer-events: none; /* prevents interaction weirdness while scrolling */
   }
 
-  /* 🔥 KEY FIX: make gallery NOT participate in layout */
   .gallery-track {
     display: block;
     overflow: visible;
 
     padding-left: var(--edge);
     padding-right: var(--edge);
-
-    /* prevents layout coupling with intro */
-    position: relative;
   }
 
   .gallery-track img {
@@ -315,6 +319,7 @@ body {
     left: var(--edge);
     right: var(--edge);
     bottom: var(--footer-bottom);
+    z-index: 10;
   }
 }
 
