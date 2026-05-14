@@ -309,6 +309,14 @@ body {
   }
 }
 
+/* edge adjustments */
+@media (max-width: 900px) {
+  :root {
+    --edge: 18px;
+    --footer-bottom: 5px;
+  }
+}
+
 /* -------------------------
    TEXT DIFFERENCE LAYER
 ------------------------- */
