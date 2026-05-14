@@ -84,6 +84,18 @@ body {
   max-width: 44%;
 }
 
+@media (max-height: 850px) {
+  .intro-inner {
+    max-width: 58%;
+  }
+}
+
+@media (max-height: 720px) {
+  .intro-inner {
+    max-width: 70%;
+  }
+}
+
 .intro p {
   font-size: var(--text-body);
   line-height: 1.45;
