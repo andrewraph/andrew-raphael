@@ -50,7 +50,7 @@ body {
 
 .intro p {
   font-size: 13pt;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .name {
@@ -82,7 +82,7 @@ body {
   width: 100%;
   flex-shrink: 0;
 
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 
 .gallery-track {
@@ -100,7 +100,7 @@ body {
 }
 
 .gallery-track img {
-  height: 30vh;
+  height: 40vh;
   width: auto;
 
   flex-shrink: 0;
@@ -128,7 +128,7 @@ body {
 
 .timezones {
   font-size: 13px;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .copyright {
@@ -163,8 +163,8 @@ body {
   }
 
   .intro p {
-    font-size: clamp(28px, 8vw, 52px);
-    line-height: 1.08;
+    font-size: 13pt;
+    line-height: 1.4;
   }
 
   .links {
