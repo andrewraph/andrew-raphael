@@ -27,17 +27,17 @@
   box-sizing: border-box;
 }
 
-/* IMPORTANT: DO NOT break scroll context */
+
 html,
 body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden; /* desktop uses JS-controlled scroll feel */
+  overflow-y: hidden; 
 }
 
 /* -------------------------
-   DESKTOP LAYOUT (UNCHANGED)
+   DESKTOP LAYOUT 
 ------------------------- */
 
 body {
@@ -49,8 +49,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* 🔒 ADDED: stabilizes stacking context so layout reflow
-     in intro does NOT visually affect gallery */
+  
   position: relative;
 }
 
@@ -77,7 +76,7 @@ body {
   display: flex;
   align-items: flex-start;
 
-  /* 🔒 ADDED: isolates intro reflow from affecting lower layers */
+  
   position: relative;
   z-index: 2;
 }
@@ -121,7 +120,7 @@ body {
 .elsewhere-content {
   padding-top: 28px;
 
-  /* NO display toggling = prevents layout jump */
+ 
   visibility: hidden;
   height: 0;
   overflow: hidden;
@@ -156,7 +155,7 @@ body {
   width: 100%;
   flex-shrink: 0;
 
-  /* 🔥 KEY FIX: remove from document flow on desktop */
+ 
 }
 
 @media (min-width: 901px) {
@@ -165,7 +164,7 @@ body {
     left: 0;
     right: 0;
 
-    /* sits above footer area visually but doesn't move */
+    
     bottom: 100px;
 
     padding-bottom: 0;
@@ -224,7 +223,7 @@ body {
   color: #fff;
   pointer-events: none;
 
-  /* keeps footer stable above all layout repaint changes */
+  
   z-index: 10;
 }
 
@@ -262,7 +261,7 @@ body {
 .colon:not(.on) { opacity: 0; }
 
 /* -------------------------
-   MOBILE FIX (CRITICAL)
+   MOBILE 
 ------------------------- */
 
 @media (max-width: 900px) {
