@@ -13,8 +13,8 @@
   --text-body: clamp(12.5px, 0.9vw, 16px);
   --text-name: clamp(20px, 1.6vw, 28px);
 
-  --edge: 22px;
-  --footer-bottom: 24px;
+  --edge: 34px;
+  --footer-bottom: 36px;
 }
 
 /* -------------------------
@@ -125,8 +125,8 @@ body {
   overflow-y: hidden;
 
   scrollbar-width: none;
-  scroll-behavior: smooth;
-  cursor: grab;
+  scroll-behavior: auto;
+  
 
   overscroll-behavior-x: contain;
 }
