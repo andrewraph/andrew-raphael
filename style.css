@@ -235,18 +235,18 @@ body {
   html,
   body {
     overflow-x: hidden;
-    overflow-y: auto; /* 🔥 enable real mobile scrolling */
+    overflow-y: auto;
     height: auto;
   }
 
   body {
-    display: block; /* restores natural document flow */
+    display: block;
   }
 
   .intro {
     padding: var(--edge);
+    padding-top: calc(var(--edge) + 10px);
     padding-bottom: 140px;
-    padding-top: 15px;
   }
 
   .intro-inner {
@@ -274,13 +274,4 @@ body {
     right: var(--edge);
     bottom: var(--footer-bottom);
   }
-}
-
-@media (max-width: 900px) {
-
-  :root {
-    --edge: 18px;
-    --footer-bottom: 18px;
-  }
-
 }
