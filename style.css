@@ -78,12 +78,17 @@ body {
   line-height: 1.45;
 }
 
-/* IMPORTANT FIX:
-   KEEP NAME INLINE (DO NOT BREAK FLOW) */
 .name {
   font-size: var(--text-name);
-  line-height: inherit;   /* prevents spacing disruption */
-  display: inline;        /* CRITICAL: keeps it in sentence flow */
+  line-height: 1;
+  display: inline;
+
+  /* KEY FIX: prevents enlarged line box from affecting layout rhythm */
+  vertical-align: baseline;
+
+  /* optical correction so it doesn’t feel “floating” */
+  position: relative;
+  top: 0.12em;
 }
 
 /* -------------------------
