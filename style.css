@@ -166,7 +166,7 @@ body {
     right: 0;
 
     /* sits above footer area visually but doesn't move */
-    bottom: 90px;
+    bottom: 100px;
 
     padding-bottom: 0;
   }
@@ -281,7 +281,7 @@ body {
   .intro {
     padding: var(--edge);
     padding-top: calc(var(--edge) + 10px);
-    padding-bottom: 20px;
+    padding-bottom: 0px;
   }
 
   .intro-inner {
