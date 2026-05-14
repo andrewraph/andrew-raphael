@@ -252,6 +252,7 @@ body {
 
   :root {
     --edge: 18px;
+    --footer-bottom: 18px;
   }
 
 }
