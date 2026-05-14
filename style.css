@@ -10,7 +10,7 @@
 ------------------------- */
 
 :root {
-  --text-body: clamp(14px, 0.9vw, 22px);
+  --text-body: clamp(14px, 0.9vw, 23px);
   --text-name: clamp(19px, 1.6vw, 28px);
 
   --edge: 34px;
@@ -116,7 +116,8 @@ body {
 .gallery-section {
   width: 100%;
   flex-shrink: 0;
-  padding-bottom: 80px;
+  padding-bottom: 110px;
+  padding-left: 34px;
 }
 
 .gallery-track {
@@ -169,9 +170,6 @@ body {
   display: block;
 }
 
-.copyright {
-  margin-top: 6px;
-}
 
 /* -------------------------
    CLOCK FIXES
