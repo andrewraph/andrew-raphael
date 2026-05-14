@@ -13,9 +13,8 @@
   --text-body: clamp(12.5px, 0.9vw, 16px);
   --text-name: clamp(20px, 1.6vw, 28px);
 
-  /* consistent edge system */
   --edge: 12px;
-  --footer-edge: 16px;
+  --footer-bottom: 16px;
 }
 
 /* -------------------------
@@ -55,7 +54,7 @@ body {
 }
 
 /* -------------------------
-   INTRO LAYOUT FIX
+   INTRO
 ------------------------- */
 
 .intro {
@@ -73,28 +72,18 @@ body {
   max-width: 50%;
 }
 
-/* -------------------------
-   TEXT SYSTEM FIX
-   (fixes line spacing inconsistency)
-------------------------- */
-
+/* BODY TEXT */
 .intro p {
   font-size: var(--text-body);
   line-height: 1.45;
-
-  /* key fix: prevents mixed font-size line spacing distortion */
-  display: block;
 }
 
-/* name no longer participates in paragraph flow spacing issues */
+/* IMPORTANT FIX:
+   KEEP NAME INLINE (DO NOT BREAK FLOW) */
 .name {
   font-size: var(--text-name);
-  line-height: 1.15;
-
-  /* ensures it behaves like a title block, not inline text */
-  display: block;
-
-  margin-bottom: 6px;
+  line-height: inherit;   /* prevents spacing disruption */
+  display: inline;        /* CRITICAL: keeps it in sentence flow */
 }
 
 /* -------------------------
@@ -154,35 +143,34 @@ body {
 }
 
 /* -------------------------
-   FOOTER ALIGNMENT FIX
+   FOOTER (RESTORED STRUCTURE)
 ------------------------- */
 
 .footer {
   position: fixed;
   left: var(--edge);
   right: var(--edge);
-  bottom: var(--footer-edge);
-
-  display: flex;
-  justify-content: space-between;
+  bottom: var(--footer-bottom);
 
   color: #000;
   mix-blend-mode: normal;
   pointer-events: none;
 }
 
+/* KEEP STACKED LAYOUT (DO NOT CHANGE STRUCTURE) */
 .timezones,
 .copyright {
   font-size: var(--text-body);
   line-height: 1.45;
+  display: block;
 }
 
 .copyright {
-  text-align: right;
+  margin-top: 6px;
 }
 
 /* -------------------------
-   COLON CLOCK FIX
+   CLOCK FIXES
 ------------------------- */
 
 .colon {
@@ -246,6 +234,6 @@ body {
   .footer {
     left: var(--edge);
     right: var(--edge);
-    bottom: var(--footer-edge);
+    bottom: var(--footer-bottom);
   }
 }
