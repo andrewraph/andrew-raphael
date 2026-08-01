@@ -123,38 +123,7 @@ body {
   opacity: 0.5;
 }
 
-/* -------------------------
-   ELSEWHERE EXPAND
-------------------------- */
 
-.elsewhere-content {
-  padding-top: 17px;
-
-  visibility: hidden;
-  height: 0;
-  overflow: hidden;
-}
-
-.elsewhere-content.open {
-  visibility: visible;
-  height: auto;
-}
-
-.elsewhere-content p {
-  font-size: var(--text-body);
-  line-height: 1.45;
-}
-
-/* desktop breathing room */
-@media (min-width: 901px) {
-  .intro {
-    padding-bottom: 120px;
-  }
-}
-
-.links {
-  display: none;
-}
 
 /* -------------------------
    GALLERY (DESKTOP HORIZONTAL)
@@ -348,15 +317,257 @@ body {
   }
 }
 
-.intro p,
+.intro > .intro-inner {
+  opacity:0;
+  animation:textFade .6s ease forwards;
+  animation-delay:.8s;
+}
+
 .footer {
-  opacity: 0;
-  animation: textFade 0.6s ease forwards;
-  animation-delay: 0.8s;
+  opacity:1;
 }
 
 @keyframes textFade {
   to {
     opacity: 1;
   }
+}
+
+/* -------------------------
+   CONTENT SWITCHING
+------------------------- */
+
+.page-content {
+
+    display:none;
+
+}
+
+.page-content.active {
+
+    display:block;
+
+    animation:sectionFade .25s ease forwards;
+
+}
+
+
+@keyframes sectionFade {
+
+    from {
+        opacity:0;
+        transform:translateY(3px);
+    }
+
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* -------------------------
+   LINKS
+------------------------- */
+
+.intro-links {
+  font-size: var(--text-body);
+  line-height: 1.45;
+}
+
+.intro-links a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* DESKTOP */
+@media (min-width:901px){
+
+  .intro-links{
+
+    position:fixed;
+
+    top:calc(var(--edge) + 5px);
+
+    right:var(--edge);
+
+    text-align:right;
+
+    z-index:20;
+
+  }
+
+}
+
+/* MOBILE */
+@media (max-width:900px){
+
+  .intro-links{
+
+    position:static;
+
+    margin-top:28px;
+
+  }
+
+}
+
+.intro-content,
+.appointment-content{
+
+    width:100%;
+
+}
+
+.appointment-form{
+
+    margin-top:0;
+
+}
+
+@media (max-width:900px){
+
+    .intro-content,
+    .appointment-content{
+
+        padding:0;
+
+    }
+
+}
+
+
+/* -------------------------
+   FORM
+------------------------- */
+
+/* -------------------------
+   FORM
+------------------------- */
+
+.appointment-content{
+
+    font-size:var(--text-body);
+
+    line-height:1.45;
+
+}
+
+.appointment-form{
+
+    width:100%;
+
+    max-width:100%;
+
+}
+
+.appointment-form input,
+.appointment-form textarea{
+
+    display:block;
+
+    width:100%;
+
+    font:inherit;
+
+    color:inherit;
+
+    line-height:inherit;
+
+    background:none;
+
+    border:none;
+
+    border-bottom:1px solid currentColor;
+
+    border-radius:0;
+
+    outline:none;
+
+    padding:0 0 4px 0;
+
+    margin:0 0 16px 0;
+
+    -webkit-appearance:none;
+
+}
+
+.appointment-form textarea{
+
+    min-height:72px;
+
+    resize:none;
+
+}
+
+.appointment-form input::placeholder,
+.appointment-form textarea::placeholder{
+
+    color:inherit;
+
+    opacity:0.5;
+
+}
+
+.appointment-form button{
+
+    font:inherit;
+
+    color:inherit;
+
+    background:none;
+
+    border:none;
+
+    padding:0;
+
+    cursor:pointer;
+
+    text-decoration:underline;
+
+}
+
+.appointment-form button:hover{
+
+    opacity:.5;
+
+}
+
+.appointment-form select {
+
+    display:block;
+
+    width:100%;
+
+    font:inherit;
+
+    color:inherit;
+
+    line-height:inherit;
+
+    background:none;
+
+    border:none;
+
+    border-bottom:1px solid currentColor;
+
+    border-radius:0;
+
+    outline:none;
+
+    padding:0 0 4px 0;
+
+    margin:0 0 16px 0;
+
+    -webkit-appearance:none;
+    appearance:none;
+
+}
+
+.appointment-form select:invalid {
+    opacity:0.5;
+}
+
+.appointment-form select:valid {
+    opacity:1;
 }
