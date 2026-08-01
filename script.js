@@ -120,23 +120,73 @@ document.addEventListener('DOMContentLoaded', () => {
   mq.addEventListener('change', handleModeChange);
 
 
+
   /* -------------------------
-     ELSEWHERE TOGGLE
-  ------------------------- */
+   CONTENT SWITCHING
+------------------------- */
 
-  const elsewhereToggle = document.querySelector('.elsewhere-toggle');
-  const elsewhereContent = document.querySelector('.elsewhere-content');
+const sections = document.querySelectorAll('.page-content');
 
-  if (elsewhereToggle && elsewhereContent) {
+const appointmentsToggle = document.querySelector('.appointments-toggle');
+const aboutToggle = document.querySelector('.about-toggle');
+const elsewhereToggle = document.querySelector('.elsewhere-toggle');
 
-    elsewhereToggle.addEventListener('click', (e) => {
 
-      e.preventDefault();
+function showSection(section){
 
-      elsewhereContent.classList.toggle('open');
+    if (!section) return;
+
+    sections.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    section.classList.add('active');
+
+}
+
+
+if (appointmentsToggle) {
+
+    appointmentsToggle.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        showSection(
+            document.querySelector('.appointment-content')
+        );
 
     });
 
-  }
+}
+
+
+if (aboutToggle) {
+
+    aboutToggle.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        showSection(
+            document.querySelector('.about-content')
+        );
+
+    });
+
+}
+
+
+if (elsewhereToggle) {
+
+    elsewhereToggle.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        showSection(
+            document.querySelector('.elsewhere-page')
+        );
+
+    });
+
+}
 
 });
