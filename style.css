@@ -261,7 +261,7 @@ body {
   .intro {
     padding: var(--edge);
     padding-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
   }
 
   .intro-inner {
@@ -302,7 +302,7 @@ body {
   .intro{
     padding: var(--edge);
     padding-top: var(--edge);
-    padding-bottom: 50px;
+    padding-bottom: 70px;
   }
 
 }
@@ -426,7 +426,7 @@ body {
 
     position:static;
 
-    margin-top: 0;
+    margin-top: 12;
     margin-bottom: 36px;
 
   }
