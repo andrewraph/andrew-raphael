@@ -290,6 +290,17 @@ body {
   }
 }
 
+@media (max-width:900px){
+
+  .intro{
+    min-height: 100svh;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+}
+
 /* -------------------------
    TEXT DIFFERENCE LAYER
 ------------------------- */
