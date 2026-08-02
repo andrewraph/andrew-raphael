@@ -153,6 +153,23 @@ if (form) {
 
 }
 
+  const newRequest = document.querySelector('.new-request');
+
+if (newRequest) {
+
+  newRequest.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    form.reset();
+
+    form.style.display = "block";
+    thankYou.style.display = "none";
+
+  });
+
+}
+
 
 
   /* -------------------------
