@@ -130,6 +130,8 @@ const sections = document.querySelectorAll('.page-content');
 const appointmentsToggle = document.querySelector('.appointments-toggle');
 const aboutToggle = document.querySelector('.about-toggle');
 const elsewhereToggle = document.querySelector('.elsewhere-toggle');
+  
+aboutToggle.classList.add('active');
 
 
 function showSection(section){
