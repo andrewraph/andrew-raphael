@@ -533,11 +533,13 @@ body {
 
 .appointment-form input::placeholder,
 .appointment-form textarea::placeholder{
-
     color:inherit;
-
     opacity:1;
+}
 
+.appointment-form input:focus::placeholder,
+.appointment-form textarea:focus::placeholder {
+  opacity: 0;
 }
 
 .appointment-form button{
