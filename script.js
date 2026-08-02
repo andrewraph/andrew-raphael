@@ -142,6 +142,27 @@ function showSection(section){
 
     section.classList.add('active');
 
+
+    // UPDATE ACTIVE NAV LINK
+
+    document.querySelectorAll('.intro-links a')
+      .forEach(link => {
+        link.classList.remove('active');
+      });
+
+
+    if (section.classList.contains('about-content')) {
+        aboutToggle.classList.add('active');
+    }
+
+    if (section.classList.contains('appointment-content')) {
+        appointmentsToggle.classList.add('active');
+    }
+
+    if (section.classList.contains('elsewhere-page')) {
+        elsewhereToggle.classList.add('active');
+    }
+
 }
 
 
