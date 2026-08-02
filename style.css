@@ -505,7 +505,7 @@ body {
 
     color:inherit;
 
-    opacity:0.5;
+    opacity:1;
 
 }
 
@@ -565,7 +565,7 @@ body {
 }
 
 .appointment-form select:invalid {
-    opacity:0.5;
+    opacity:1;
 }
 
 .appointment-form select:valid {
