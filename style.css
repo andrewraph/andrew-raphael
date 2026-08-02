@@ -253,7 +253,7 @@ body {
 
   .intro {
     padding: var(--edge);
-    padding-top: 12px;
+    padding-top: 20px;
     padding-bottom: 50px;
   }
 
@@ -407,7 +407,7 @@ body {
     position:static;
 
     margin-top: 0;
-    margin-bottom: 28px;
+    margin-bottom: 36px;
 
   }
 
