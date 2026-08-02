@@ -606,3 +606,7 @@ body {
 .appointment-form select:valid {
     opacity:1;
 }
+
+.thank-you {
+  animation: sectionFade .25s ease forwards;
+}
