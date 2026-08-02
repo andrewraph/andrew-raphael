@@ -299,9 +299,7 @@ body {
   .intro{
     padding: var(--edge);
     padding-top: var(--edge);
-    padding-bottom: 110px;
-
-    min-height: calc(100dvh + 60px);
+    padding-bottom: 50px;
   }
 
 }
