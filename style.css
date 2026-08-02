@@ -123,6 +123,10 @@ body {
   opacity: 0.5;
 }
 
+.intro-links a.active {
+  opacity: 0.5;
+}
+
 
 
 /* -------------------------
