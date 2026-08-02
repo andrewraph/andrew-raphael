@@ -293,12 +293,11 @@ body {
 @media (max-width:900px){
 
   .intro{
-    min-height: 100svh;
-    padding-bottom: 20px;
-    display: flex;
-    align-items: flex-start;
-  }
+    padding: var(--edge);
+    padding-top: var(--edge);
+    padding-bottom: 50px;
 
+    min-height: calc(100dvh + 60px);
 }
 
 /* -------------------------
