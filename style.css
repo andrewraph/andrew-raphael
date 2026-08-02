@@ -125,7 +125,6 @@ body {
 
 .intro-links a.active {
   opacity: 0.5;
-  text-decoration: none;
 }
 
 
@@ -395,6 +394,7 @@ body {
 .intro-links a {
   color: inherit;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 
