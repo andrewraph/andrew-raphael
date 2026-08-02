@@ -444,6 +444,14 @@ body {
 
 @media (max-width:900px){
 
+  .mobile-gallery.hidden{
+    display:none;
+  }
+
+}
+
+@media (max-width:900px){
+
     .intro-content,
     .appointment-content{
 
@@ -452,6 +460,8 @@ body {
     }
 
 }
+
+
 
 
 /* -------------------------
