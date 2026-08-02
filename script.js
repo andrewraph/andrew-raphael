@@ -145,6 +145,24 @@ function showSection(section){
     section.classList.add('active');
 
 
+    // MOBILE GALLERY VISIBILITY
+
+    const gallerySection = document.querySelector('.mobile-gallery');
+
+    if (gallerySection) {
+
+        gallerySection.classList.remove('hidden');
+
+        if (
+          section.classList.contains('appointment-content') ||
+          section.classList.contains('elsewhere-page')
+        ) {
+          gallerySection.classList.add('hidden');
+        }
+
+    }
+
+
     // UPDATE ACTIVE NAV LINK
 
     document.querySelectorAll('.intro-links a')
