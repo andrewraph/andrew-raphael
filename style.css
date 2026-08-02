@@ -295,7 +295,7 @@ body {
   .intro{
     padding: var(--edge);
     padding-top: var(--edge);
-    padding-bottom: 50px;
+    padding-bottom: 110px;
 
     min-height: calc(100dvh + 60px);
 }
