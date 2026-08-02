@@ -125,7 +125,10 @@ body {
 
 .intro-links a.active {
   opacity: 0.5;
+  text-decoration: none;
 }
+
+
 
 
 
@@ -393,6 +396,8 @@ body {
   color: inherit;
   text-decoration: underline;
 }
+
+
 
 /* DESKTOP */
 @media (min-width:901px){
